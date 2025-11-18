@@ -33,31 +33,35 @@ public class Anagram {
 		String lowerStr1 = preProcess(str1);
 		String lowerStr2 = preProcess(str2);
 		lowerStr1 = whithoutSpace(lowerStr1);
-		lowerStr2 = whithoutSpace(lowerStr2);
-		boolean anagram = true;
+		lowerStr2 = whithoutSpace(lowerStr1);
 
 		if (lowerStr1.length() != lowerStr2.length()){
 			return false;
 		}
 
 		for (int i = 0; i < lowerStr1.length(); i ++){
-			char firstStr = lowerStr1.charAt(i);
+			boolean anagram = false;
 
 			for (int j = 0; j < lowerStr2.length(); j++){
+			char firstStr = lowerStr1.charAt(i);
 			char secondStr = lowerStr2.charAt(j);
 
+
 			if (firstStr == secondStr){
+				lowerStr2 = lowerStr2.substring(0,j) + '*' + lowerStr2.substring(j+1);
 				anagram = true;
 				break;
-			} else {
-				anagram = false;
 			}
-
 		}
 
+		if (!anagram) {
+			return false;
 		}
-		return anagram;
+
 	}
+
+	return true;
+}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
@@ -69,7 +73,7 @@ public class Anagram {
 
     for (int i = 0; i < length; i++) {
         char c = lowerCase.charAt(i);
-        if ((c >= 'a' && c <= 'z') || c == ' ') {
+        if ((c >= 'a' && c <= 'z')) {
             preProcessed = preProcessed + c;
         }
     }
