@@ -25,25 +25,87 @@ public class Anagram {
 		}
 		System.out.println(pass ? "test passed" : "test Failed");
 	}  
+//end of main
+
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		String lowerStr1 = preProcess(str1);
+		String lowerStr2 = preProcess(str2);
+		lowerStr1 = whithoutSpace(lowerStr1);
+		lowerStr2 = whithoutSpace(lowerStr2);
+		boolean anagram = true;
+
+		if (lowerStr1.length() != lowerStr2.length()){
+			return false;
+		}
+
+		for (int i = 0; i < lowerStr1.length(); i ++){
+			char firstStr = lowerStr1.charAt(i);
+
+			for (int j = 0; j < lowerStr2.length(); j++){
+			char secondStr = lowerStr2.charAt(j);
+
+			if (firstStr == secondStr){
+				anagram = true;
+				break;
+			} else {
+				anagram = false;
+			}
+
+		}
+
+		}
+		return anagram;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+    	String lowerCase = str.toLowerCase();
+    	int length = str.length();
+		String preProcessed = "";
+
+    for (int i = 0; i < length; i++) {
+        char c = lowerCase.charAt(i);
+        if ((c >= 'a' && c <= 'z') || c == ' ') {
+            preProcessed = preProcessed + c;
+        }
+    }
+    return preProcessed;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String originalStr = str;
+		String randomStr = "";
+		int length = originalStr.length();
+
+		for (int i = 0; i < length; i++){
+			int randomIndex = (int)(Math.random() * originalStr.length());
+			char a = originalStr.charAt(randomIndex);
+			randomStr += a;
+
+			originalStr = originalStr.substring(0, randomIndex) + originalStr.substring(randomIndex + 1);
+		}
+	
+		return randomStr;
 	}
+
+
+	public static String whithoutSpace(String str) {
+    	String lowerCase = str.toLowerCase();
+    	int length = str.length();
+		String preProcessed = "";
+
+    for (int i = 0; i < length; i++) {
+        char c = lowerCase.charAt(i);
+        if ((c >= 'a' && c <= 'z')) {
+            preProcessed = preProcessed + c;
+        }
+    }
+    return preProcessed;
+	} 
 }
