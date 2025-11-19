@@ -31,16 +31,14 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		if (str1.length() != str2.length()){
-			return false;
-		}
-
 		String lowerStr1 = preProcess(str1);
 		String lowerStr2 = preProcess(str2);
 		//lowerStr1 = whithoutSpace(lowerStr1);
 		//lowerStr2 = whithoutSpace(lowerStr1);
 
-		
+		if (lowerStr1.length() != lowerStr2.length()){
+			return false;
+		}
 
 		for (int i = 0; i < lowerStr1.length(); i ++){
 			boolean anagram = false;
