@@ -30,10 +30,11 @@ public class Anagram {
 
 
 	// Returns true if the two given strings are anagrams, false otherwise.
-	public static bgit oolean isAnagram(String str1, String str2) {
+	public static boolean isAnagram(String str1, String str2) {
 		if (str1.length() != str2.length()){
 			return false;
 		}
+
 		String lowerStr1 = preProcess(str1);
 		String lowerStr2 = preProcess(str2);
 		//lowerStr1 = whithoutSpace(lowerStr1);
