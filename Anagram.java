@@ -24,6 +24,7 @@ public class Anagram {
 			if (!pass) break;
 		}
 		System.out.println(pass ? "test passed" : "test Failed");
+
 	}  
 //end of main
 
@@ -32,8 +33,8 @@ public class Anagram {
 	public static boolean isAnagram(String str1, String str2) {
 		String lowerStr1 = preProcess(str1);
 		String lowerStr2 = preProcess(str2);
-		lowerStr1 = whithoutSpace(lowerStr1);
-		lowerStr2 = whithoutSpace(lowerStr1);
+		//lowerStr1 = whithoutSpace(lowerStr1);
+		//lowerStr2 = whithoutSpace(lowerStr1);
 
 		if (lowerStr1.length() != lowerStr2.length()){
 			return false;
